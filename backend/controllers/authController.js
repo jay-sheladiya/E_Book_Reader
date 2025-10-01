@@ -3,7 +3,11 @@ const User = require('../models/User');
 const UserFactory = require('../patterns/UserFactory');
 const Logger = require('../patterns/Logger');
 
-const generateToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' });
+const generateToken = (id) => {
+  const secret = process.env.JWT_SECRET || 'testsecret'; 
+  return jwt.sign({ id }, secret, { expiresIn: '30d' });
+};
+
 
 const registerUser = async (req, res, next) => {
   try {
@@ -17,7 +21,13 @@ const registerUser = async (req, res, next) => {
     const user = await userInstance.save();
 
     Logger.info(`Registered new user ${user.email}`);
-    res.status(201).json({ id: user._id, name: user.name, email: user.email, role: user.role, token: generateToken(user._id) });
+    res.status(201).json({
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      token: generateToken(user._id)
+    });
   } catch (err) {
     next(err);
   }
@@ -30,7 +40,13 @@ const loginUser = async (req, res, next) => {
 
     const user = await User.findOne({ email });
     if (user && await user.matchPassword(password)) {
-      res.json({ id: user._id, name: user.name, email: user.email, role: user.role, token: generateToken(user._id) });
+      res.json({
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        token: generateToken(user._id)
+      });
     } else {
       res.status(401).json({ message: 'Invalid email or password' });
     }
@@ -58,7 +74,14 @@ const updateUserProfile = async (req, res, next) => {
     user.address = address || user.address;
     if (password) user.password = password;
     const updated = await user.save();
-    res.json({ id: updated._id, name: updated.name, email: updated.email, university: updated.university, address: updated.address, token: generateToken(updated._id) });
+    res.json({
+      id: updated._id,
+      name: updated.name,
+      email: updated.email,
+      university: updated.university,
+      address: updated.address,
+      token: generateToken(updated._id)
+    });
   } catch (err) { next(err); }
 };
 
