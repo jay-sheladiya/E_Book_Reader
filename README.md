@@ -219,21 +219,49 @@ Report
 * Successful implementation, deploymentand CI/CD pipeline.
 * Problem-solving skills and the ability to go beyond basic requirements.
 ## 
-# Project overview
-The app can be accessed at http://localhost:3000
-If the Ip changes then its should be changed here too
-## Ebook Reader Project
-Purpose: A full-stack web application for managing and reading digital books, enabling users to browse, manage, and track reading progress.
-# Core Features:
-Create, read, update, and delete books and bookmarks.
-Secure user authentication using JWT for protected access.
-Bookmark tracking to save and manage reading progress.
-Responsive React-based UI for seamless book browsing.
+
+## 🛠️ Features
+- User registration and login system
+- Browse and view available books
+- Add, update, or delete book records
+- Read book summaries and details
+- Responsive design for desktop and mobile
+- Team collaboration using GitHub branches and pull requests
+
+## ⚙️ Project Setup Instructions
+
+### 1. Clone the Repository
+```bash
+https://github.com/jay-sheladiya/E_Book_Reader.git
+
+### 2.Navigate to the Project Folder
+
+### 3. Backend Setup
+cd backend
+npm install
+npm start
+
+& npm test
+The backend will start on http://localhost:5000.
+
+### 4. Frontend Setup
+cd frontend
+npm install
+npm start
+The frontend will start on http://localhost:3000.
+
+Figma Link: https://www.figma.com/design/FywsB6WIcynXuqKM5zjeqW/Untitled?node-id=0-1&t=avhI5eYSk5UazrVj-1
+
+Production level URL
+https://www.figma.com/proto/FywsB6WIcynXuqKM5zjeqW/Untitled?node-id=3-2&p=f&t=avhI5eYSk5UazrVj-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1
+
 
 # Technology Stack:
 Backend: Node.js with Express, handling RESTful API requests.
 Frontend: React for an interactive user interface.
 Database: MongoDB (mongodb://localhost:5000) for storing books and bookmarks.
+Api testing: Postman
+UI/UX Design: Figma & Prototyping, share the production level URL
 Testing: Mocha, Chai, and Sinon for robust backend testing.
 Deployment: PM2 for managing backend (server.js) and frontend (build directory) processes.
 
