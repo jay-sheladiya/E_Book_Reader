@@ -1,7 +1,6 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const http = require('http');
-const app = require('../server');
 const mongoose = require('mongoose');
 const sinon = require('sinon');
 const Book = require('../models/Book');
@@ -453,4 +452,8 @@ describe('Book and Bookmark Controller Tests', () => {
       expect(res.json.calledWithMatch({ message: 'Server error' })).to.be.true;
     });
   });
+});
+
+after(async () => {
+  await mongoose.disconnect();
 });
