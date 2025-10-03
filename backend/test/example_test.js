@@ -179,7 +179,7 @@ describe('Book and Bookmark Controller Tests', () => {
         status: sinon.stub().returnsThis()
       };
 
-      await updateBook(req, res, () => {});
+      await getBooks(req, res, () => {});
 
       expect(res.status.calledWith(500)).to.be.true;
       expect(res.json.calledWithMatch({ message: 'Server error' })).to.be.true;
